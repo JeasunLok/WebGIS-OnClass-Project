@@ -1,0 +1,73 @@
+* {
+    box-sizing: border-box;
+}
+
+html,body {
+    height: 100%;
+}
+
+body>* {
+    width: 98%;
+    height: auto;
+    margin: 0 auto;
+}
+
+header {
+    margin-top: 5px;
+    padding: 0px;
+    height: 45px;
+    text-align: center;
+}
+
+section {
+    height: 100%;
+    border: none;
+    padding: 0px;
+    padding-top: 1px;
+    margin-top: 1px;
+}
+
+footer {
+    height: 30px;
+}
+
+.section-height {
+    height: 100%;
+}
+
+.footer-height {
+    height: 30px;
+}
+
+/* tab页内容的高度 */
+.tabcontent-height {
+    height: calc(100% - 36px);    
+}
+
+.tabcontent-height > div {
+    height:100%;    
+}
+
+.tabcontent-height > div > div {
+    padding: 3px; 
+    height: 100%;
+}
+
+.row-div-div {
+    border: 1px solid #000; 
+    height: 100%;
+    margin: 1px;
+    font-size: small;
+}
+
+/*.row > div >div {
+    border: 1px solid #000; 
+    height: 100%;
+    margin: 1px;
+    font-size: small;
+}*/
+
+section>* {
+    height: calc(100% - 140px);
+    padding: 1px;
+}
