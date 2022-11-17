@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>WebGIS教学</title>
+        
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://js.arcgis.com/4.23/esri/themes/light/main.css">        
+        <link rel="stylesheet" href="css/layout.css">
+        <style>
+
+        </style>
+    </head>
+
+    <body>
+        <header class="bg-secondary text-white rounded">
+            <img class="float-start rounded-circle" src="images/logo.png" alt="logo" style="height:45px"> </image>
+            <h3 style="padding-top:5px">Web GIS教学演示系统</h3>
+        </header>
+        <nav class="navbar navbar-expand-md bg-dark navbar-dark rounded">
+            <!-- Brand -->
+            <a class="navbar-brand" href="#">工具栏</a>
+           
+            <!-- Toggler/collapsibe Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+           
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <div>
+                    <button type="button" class="btn btn-primary btn-sm" onclick="Test()">Apple</button>
+                    <button type="button" class="btn btn-primary btn-sm">Samsung</button>
+                    <button type="button" class="btn btn-primary btn-sm">Sony</button>
+                </div>
+            </div> 
+        </nav>
+        
+        <section>
+            <div class="container-fluid">
+                <div class="row section-height">
+                    <div class="col-sm-2 p-0">
+                        <div id="leftDiv" class="row-div-div">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                  <button class="nav-link active" id="basemap-tab" data-bs-toggle="tab" data-bs-target="#basemap" type="button" role="tab" aria-controls="basemap" aria-selected="true">底图</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                  <button class="nav-link" id="layers-tab" data-bs-toggle="tab" data-bs-target="#layers" type="button" role="tab" aria-controls="layers" aria-selected="false">图层</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                  <button class="nav-link" id="legend-tab" data-bs-toggle="tab" data-bs-target="#legend" type="button" role="tab" aria-controls="legend" aria-selected="false">图例</button>
+                                </li>
+                            </ul>
+                            <div class="tab-content tabcontent-height" id="myTabContent">
+                                <div class="tab-pane fade show active" id="basemap" role="tabpanel" aria-labelledby="basemap-tab">
+                                    <div class="list-group">
+                                        <a href="#" class="list-group-item list-group-item-action">arcgis-topographic</a>
+                                        <a href="#" class="list-group-item list-group-item-action">arcgis-imagery</a>
+                                        <a href="#" class="list-group-item list-group-item-action">arcgis-light-gray</a>
+                                        <a href="#" class="list-group-item list-group-item-action">arcgis-dark-gray</a>
+                                        <a href="#" class="list-group-item list-group-item-action">arcgis-navigation</a>
+                                        <a href="#" class="list-group-item list-group-item-action">arcgis-streets</a>
+                                        <a href="#" class="list-group-item list-group-item-action">acrgis-oceans</a>
+                                        <a href="#" class="list-group-item list-group-item-action">osm-streets</a>
+                                        <a href="#" class="list-group-item list-group-item-action">arcgis-terrain</a>
+                                        <a href="#" class="list-group-item list-group-item-action text-primary">satellite</a>
+                                        <a href="#" class="list-group-item list-group-item-action text-primary">hybrid</a>
+                                        <a href="#" class="list-group-item list-group-item-action text-primary">oceans</a>
+                                        <a href="#" class="list-group-item list-group-item-action text-primary">terrian</a>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="layers" role="tabpanel" aria-labelledby="layers-tab">图层</div>
+                                <div class="tab-pane fade" id="legend" role="tabpanel" aria-labelledby="legend-tab">图例</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-10 p-0">
+                        <div class="row-div-div">
+                            <!--二维和三维视图的Tab -->
+                            <ul class="nav nav-tabs" id="myTab1" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                  <button class="nav-link active" id="map-tab" data-bs-toggle="tab" data-bs-target="#map" type="button" role="tab" aria-controls="map" aria-selected="true">二维地图</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                  <button class="nav-link" id="scene-tab" data-bs-toggle="tab" data-bs-target="#scene" type="button" role="tab" aria-controls="layers" aria-selected="false">三维地图</button>
+                                </li>
+                            </ul>
+                            <div class="tab-content tabcontent-height" id="myTabContent1">
+                                <div class="tab-pane fade show active" id="map" role="tabpanel" aria-labelledby="map-tab">
+                                    <div id="mapDiv"> </div>
+                                </div>
+                                <div class="tab-pane fade show" id="scene" role="tabpanel" aria-labelledby="scene-tab">
+                                    <div id="sceneDiv"> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row footer-height">
+                    <div class="col-sm-12 p-0 mt-1 bg-light text-black">
+                        <div id="footerDiv">
+                            状态栏
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </section>
+
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="https://js.arcgis.com/4.23/"></script>
+        <script src="../js/jquery-3.6.0.min.js"></script>
+        <script>
+            require(["esri/config","esri/Map", "esri/views/MapView",  "esri/views/SceneView", "esri/widgets/BasemapGallery"], 
+            function (esriConfig,Map, MapView, SceneView, BasemapGallery) {
+                //esriConfig.apiKey = "YOUR_API_KEY";
+                esriConfig.apiKey = "AAPKd754b17e153a4dc389b0a20694b092ccQJpx9qtdKXhF7p-blXJ62WuUJWUKilClKW6fsE6LvWYmD0ryEMzJh0om-R9mwaap";
+                const map = new Map({
+                    basemap: "arcgis-topographic", // Basemap layer service
+                    ground: "world-elevation", //Elevation service
+                });
+
+                // 打开二维视图
+                const view = new MapView({
+                    map: map,
+                    center: [113.0, 23.0], // Longitude, latitude
+                    zoom: 13, // Zoom level
+                    container: "mapDiv" // Div element
+                });
+
+                // 
+
+                const basemapGallery = new BasemapGallery({
+                    view: view
+                });
+
+                // 在Map的右上角添加basemapGallery的Widget
+                view.ui.add(basemapGallery, {
+                    position: "top-right"
+                });       
+
+                // 打开三维地图
+                const view3D = new SceneView({
+                    map: map,
+                    container: "sceneDiv", // Div element
+                    camera: {
+                        position: {
+                        x: -118.808, //Longitude
+                        y: 33.961, //Latitude
+                        z: 2000 //Meters
+                    },
+                    tilt: 75
+                    }                    
+                });
+
+                // 给所有的"list-group-items"添加click处理事件，以切换map的底图
+                $(function() {
+                    $(".list-group-item").click(function(){
+                        map.basemap = $(this).text();
+                    });
+                });
+
+ /*               $(function() {
+                    $('[role="tabpanel"]').click(function() {
+                    alert("ok!");
+                });*/
+            });
+        </script>        
+    </body>
+</html>
